@@ -6,17 +6,26 @@ class ChatScreen extends StatelessWidget {
   // inisiasi database
   final db = FirebaseFirestore.instance;
 
+  // get collection
+  final Stream<QuerySnapshot> _chatStream = FirebaseFirestore.instance
+      .collection('chats/B8x1tzwNzIEW2WVF404v/messages')
+      .snapshots();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: 15,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text("Chat List"),
-          );
-        },
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: _chatStream,
+          builder: (context, snapshot) {
+            return ListView.builder(
+              itemCount: 15,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text("Chat List"),
+                );
+              },
+            );
+          }),
     );
   }
 }
