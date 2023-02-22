@@ -15,8 +15,11 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-          stream: _chatStream,
-          builder: (context, snapshot) {
+        stream: _chatStream,
+        builder: (context, snapshot) {
+          // jika snapshot aktif
+          if (snapshot.connectionState == ConnectionState.active) {
+            // maka..
             return ListView.builder(
               itemCount: 15,
               itemBuilder: (context, index) {
@@ -25,7 +28,13 @@ class ChatScreen extends StatelessWidget {
                 );
               },
             );
-          }),
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }
