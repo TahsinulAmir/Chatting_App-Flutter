@@ -14,6 +14,15 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          FirebaseFirestore.instance
+              .collection('chats/B8x1tzwNzIEW2WVF404v/messages')
+              // menambahkan data & dibuat mapping
+              .add({'text': "New Data"});
+        },
+        child: Icon(Icons.add),
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _chatStream,
         builder: (context, snapshot) {
