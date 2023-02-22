@@ -19,12 +19,16 @@ class ChatScreen extends StatelessWidget {
         builder: (context, snapshot) {
           // jika snapshot aktif
           if (snapshot.connectionState == ConnectionState.active) {
+            // mengambil data chats
+            final chatList = snapshot.data!.docs;
             // maka..
             return ListView.builder(
-              itemCount: 15,
+              itemCount: chatList.length,
               itemBuilder: (context, index) {
+                // get chat
+                final chat = chatList[index];
                 return ListTile(
-                  title: Text("Chat List"),
+                  title: Text(chat['text']),
                 );
               },
             );
