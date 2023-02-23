@@ -37,7 +37,7 @@ class ChatScreen extends StatelessWidget {
         ],
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: _chatStream,
+        stream: FirebaseFirestore.instance.collection('chat').snapshots(),
         builder: (context, snapshot) {
           // jika snapshot aktif
           if (snapshot.connectionState == ConnectionState.active) {
