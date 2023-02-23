@@ -15,6 +15,15 @@ class _FormAuthState extends State<FormAuth> {
     String _email = '';
     String _password = '';
 
+    void _trySubmit() {
+      bool isValid = _formKey.currentState!.validate();
+
+      if (isValid) {
+        // akan menjalankan property onSave
+        _formKey.currentState!.save();
+      }
+    }
+
     return SingleChildScrollView(
       child: Center(
         child: Card(
