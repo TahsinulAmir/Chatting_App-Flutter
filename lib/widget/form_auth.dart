@@ -8,24 +8,24 @@ class FormAuth extends StatefulWidget {
 }
 
 class _FormAuthState extends State<FormAuth> {
+  bool isLogin = false;
+  final _formKey = GlobalKey<FormState>();
+  String _username = '';
+  String _email = '';
+  String _password = '';
+
+  void _trySubmit() {
+    bool isValid = _formKey.currentState!.validate();
+
+    if (isValid) {
+      // akan menjalankan property onSave
+      _formKey.currentState!.save();
+      print(_username);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool isLogin = false;
-    final _formKey = GlobalKey<FormState>();
-    String _username = '';
-    String _email = '';
-    String _password = '';
-
-    void _trySubmit() {
-      bool isValid = _formKey.currentState!.validate();
-
-      if (isValid) {
-        // akan menjalankan property onSave
-        _formKey.currentState!.save();
-        print(_username);
-      }
-    }
-
     return SingleChildScrollView(
       child: Center(
         child: Card(
@@ -89,7 +89,7 @@ class _FormAuthState extends State<FormAuth> {
                     onPressed: () {
                       _trySubmit();
                     },
-                    child: Text("Login"),
+                    child: isLogin ? Text("Login") : Text("Register"),
                   ),
                   TextButton(
                     onPressed: () {
@@ -98,7 +98,9 @@ class _FormAuthState extends State<FormAuth> {
                         isLogin = !isLogin;
                       });
                     },
-                    child: Text("Create Account"),
+                    child: isLogin
+                        ? Text("Create Account")
+                        : Text("I have already account"),
                   ),
                 ],
               ),
