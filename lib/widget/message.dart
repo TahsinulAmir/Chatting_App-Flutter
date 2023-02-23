@@ -1,3 +1,4 @@
+import 'package:chatting_app/widget/bubble_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -25,7 +26,9 @@ class Messages extends StatelessWidget {
             itemBuilder: (context, index) {
               // get chat
               final chat = chatList[index];
-              return Text(chat['text']);
+              return BubbleMessage(
+                message: chat['text'],
+              );
             },
           );
         } else {
