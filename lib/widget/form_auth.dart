@@ -40,6 +40,7 @@ class _FormAuthState extends State<FormAuth> {
                   // kondisi untuk menghilangkan username
                   if (!isLogin) // Jika bukan menu login
                     TextFormField(
+                      key: ValueKey('username'),
                       onSaved: ((value) {
                         // _username diatas akan diisi dengan value
                         _username = value!;
@@ -54,6 +55,7 @@ class _FormAuthState extends State<FormAuth> {
                       ),
                     ),
                   TextFormField(
+                    key: ValueKey('Email'),
                     onSaved: ((value) {
                       // _email diatas akan diisi dengan value
                       _email = value!;
@@ -69,6 +71,7 @@ class _FormAuthState extends State<FormAuth> {
                     ),
                   ),
                   TextFormField(
+                    key: ValueKey('Password'),
                     onSaved: ((value) {
                       // _password diatas akan diisi dengan value
                       _password = value!;
