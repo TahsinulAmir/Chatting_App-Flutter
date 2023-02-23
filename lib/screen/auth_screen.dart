@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../widget/form_auth.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -10,8 +10,19 @@ class AuthScreen extends StatelessWidget {
     String email,
     String password,
     bool isLogin,
-  ) {
-    print(username);
+  ) async {
+    try {
+      if (isLogin) {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+      } else {
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password);
+      }
+      // tambah "on FirebaseAuthException"
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
   }
 
   @override
