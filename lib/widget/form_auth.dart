@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 
 class FormAuth extends StatefulWidget {
-  const FormAuth({super.key});
+  FormAuth({super.key, required this.submitForm});
+
+// Ceate Constructor
+  final Function(
+    String username,
+    String email,
+    String password,
+    bool isLogin,
+  ) submitForm;
 
   @override
   State<FormAuth> createState() => _FormAuthState();

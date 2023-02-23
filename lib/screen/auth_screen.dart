@@ -9,7 +9,7 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlue,
-      body: FormAuth(),
+      body: FormAuth(submitForm: ),
     );
   }
 }
