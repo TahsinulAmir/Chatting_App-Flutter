@@ -27,6 +27,12 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
+          // Jika ada akunnya/sudah login
+          if (snapshot.data != null) {
+            // maka akan mereturn
+            return ChatScreen();
+          }
+          // jika tidak ada...maka akan mereturn
           return AuthScreen();
         },
       ),
