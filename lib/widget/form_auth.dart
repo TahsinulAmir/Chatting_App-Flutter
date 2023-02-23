@@ -37,20 +37,22 @@ class _FormAuthState extends State<FormAuth> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextFormField(
-                    onSaved: ((value) {
-                      // _username diatas akan diisi dengan value
-                      _username = value!;
-                    }),
-                    validator: (value) {
-                      if (value!.isEmpty || value.length < 4) {
-                        return "Username minimal 4 karakter";
-                      }
-                    },
-                    decoration: InputDecoration(
-                      label: Text("Username"),
+                  // kondisi untuk menghilangkan username
+                  if (!isLogin) // Jika bukan menu login
+                    TextFormField(
+                      onSaved: ((value) {
+                        // _username diatas akan diisi dengan value
+                        _username = value!;
+                      }),
+                      validator: (value) {
+                        if (value!.isEmpty || value.length < 4) {
+                          return "Username minimal 4 karakter";
+                        }
+                      },
+                      decoration: InputDecoration(
+                        label: Text("Username"),
+                      ),
                     ),
-                  ),
                   TextFormField(
                     onSaved: ((value) {
                       // _email diatas akan diisi dengan value
