@@ -5,10 +5,10 @@ class FormAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        margin: EdgeInsets.symmetric(vertical: 200, horizontal: 20),
-        child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Center(
+        child: Card(
+          margin: EdgeInsets.symmetric(vertical: 200, horizontal: 20),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
