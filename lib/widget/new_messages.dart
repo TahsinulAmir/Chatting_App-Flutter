@@ -13,7 +13,21 @@ class _NewMessagesState extends State<NewMessages> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextField(),
+      padding: EdgeInsets.all(20),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.send,
+              color: Colors.blue,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
