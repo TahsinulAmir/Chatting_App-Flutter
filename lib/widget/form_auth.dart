@@ -10,6 +10,7 @@ class FormAuth extends StatefulWidget {
 class _FormAuthState extends State<FormAuth> {
   @override
   Widget build(BuildContext context) {
+    bool isLogin = false;
     final _formKey = GlobalKey<FormState>();
     String _username = '';
     String _email = '';
@@ -91,7 +92,12 @@ class _FormAuthState extends State<FormAuth> {
                     child: Text("Login"),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        // false => true, sebaliknya
+                        isLogin = !isLogin;
+                      });
+                    },
                     child: Text("Create Account"),
                   ),
                 ],
