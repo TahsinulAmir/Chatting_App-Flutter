@@ -21,9 +21,7 @@ class Messages extends StatelessWidget {
             itemBuilder: (context, index) {
               // get chat
               final chat = chatList[index];
-              return ListTile(
-                title: Text(chat['text']),
-              );
+              return Text(chat['text']);
             },
           );
         } else {
