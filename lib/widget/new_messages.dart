@@ -13,6 +13,7 @@ class NewMessages extends StatefulWidget {
 
 class _NewMessagesState extends State<NewMessages> {
   String _message = '';
+  final messageController = TextEditingController();
 
   void _sendMessage() {
     // Jika pesannya/_message kosong makan tidak dikirim
@@ -24,6 +25,10 @@ class _NewMessagesState extends State<NewMessages> {
     FirebaseFirestore.instance.collection('chat').add({
       'text': _message,
     });
+    // menghapus text di TextField
+    messageController.clear();
+    // reset
+    _message = '';
   }
 
   @override
@@ -34,6 +39,7 @@ class _NewMessagesState extends State<NewMessages> {
         children: [
           Expanded(
             child: TextField(
+              controller: messageController,
               onChanged: (value) {
                 setState(() {
                   _message = value;
