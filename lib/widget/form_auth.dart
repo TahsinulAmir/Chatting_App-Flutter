@@ -11,6 +11,10 @@ class _FormAuthState extends State<FormAuth> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+    String _username = '';
+    String _email = '';
+    String _password = '';
+
     return SingleChildScrollView(
       child: Center(
         child: Card(
@@ -23,17 +27,32 @@ class _FormAuthState extends State<FormAuth> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty || value.length < 4) {
+                        return "Username minimal 4 karakter";
+                      }
+                    },
                     decoration: InputDecoration(
                       label: Text("Username"),
                     ),
                   ),
                   TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty || !value.contains('@')) {
+                        return "Username tidak valid";
+                      }
+                    },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       label: Text("Email"),
                     ),
                   ),
                   TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty || value.length < 6) {
+                        return "Username minimal 6 karakter";
+                      }
+                    },
                     obscureText: true,
                     // keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
