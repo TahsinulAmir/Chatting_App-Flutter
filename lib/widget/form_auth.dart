@@ -28,7 +28,7 @@ class _FormAuthState extends State<FormAuth> {
     if (isValid) {
       // akan menjalankan property onSave
       _formKey.currentState!.save();
-      print(_username);
+      widget.submitForm(_username, _email, _password, isLogin);
     }
   }
 
