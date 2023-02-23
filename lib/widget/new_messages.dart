@@ -10,6 +10,7 @@ class NewMessages extends StatefulWidget {
 }
 
 class _NewMessagesState extends State<NewMessages> {
+  String _message = '';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +18,13 @@ class _NewMessagesState extends State<NewMessages> {
       child: Row(
         children: [
           Expanded(
-            child: TextField(),
+            child: TextField(
+              onChanged: (value) {
+                setState(() {
+                  _message = value;
+                });
+              },
+            ),
           ),
           IconButton(
             onPressed: () {},
