@@ -9,7 +9,10 @@ class Messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('chat').snapshots(),
+      stream: FirebaseFirestore.instance
+          .collection('chat')
+          .orderBy('createdAt', descending: true)
+          .snapshots(), // createdAt => urutkan dari waktu yang terbaru, descanding => daribawah keatas
       builder: (context, snapshot) {
         // jika snapshot aktif
         if (snapshot.connectionState == ConnectionState.active) {
@@ -17,6 +20,7 @@ class Messages extends StatelessWidget {
           final chatList = snapshot.data!.docs;
           // maka..
           return ListView.builder(
+            reverse: true, // meletakkan text chat di bawah
             itemCount: chatList.length,
             itemBuilder: (context, index) {
               // get chat

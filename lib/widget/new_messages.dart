@@ -24,6 +24,7 @@ class _NewMessagesState extends State<NewMessages> {
     // Disimpan di collection chat dari variable _message
     FirebaseFirestore.instance.collection('chat').add({
       'text': _message,
+      'createdAt': Timestamp.now(), // mengurutkan dari waktu yang terbaru
     });
     // menghapus text di TextField
     messageController.clear();
