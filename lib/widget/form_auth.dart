@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FormAuth extends StatelessWidget {
+class FormAuth extends StatefulWidget {
   const FormAuth({super.key});
 
+  @override
+  State<FormAuth> createState() => _FormAuthState();
+}
+
+class _FormAuthState extends State<FormAuth> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
