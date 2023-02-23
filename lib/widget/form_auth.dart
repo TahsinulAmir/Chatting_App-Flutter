@@ -21,6 +21,7 @@ class _FormAuthState extends State<FormAuth> {
       if (isValid) {
         // akan menjalankan property onSave
         _formKey.currentState!.save();
+        print(_username);
       }
     }
 
@@ -36,6 +37,10 @@ class _FormAuthState extends State<FormAuth> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextFormField(
+                    onSaved: ((value) {
+                      // _username diatas akan diisi dengan value
+                      _username = value!;
+                    }),
                     validator: (value) {
                       if (value!.isEmpty || value.length < 4) {
                         return "Username minimal 4 karakter";
@@ -46,9 +51,13 @@ class _FormAuthState extends State<FormAuth> {
                     ),
                   ),
                   TextFormField(
+                    onSaved: ((value) {
+                      // _email diatas akan diisi dengan value
+                      _email = value!;
+                    }),
                     validator: (value) {
                       if (value!.isEmpty || !value.contains('@')) {
-                        return "Username tidak valid";
+                        return "Email tidak valid";
                       }
                     },
                     keyboardType: TextInputType.emailAddress,
@@ -57,9 +66,13 @@ class _FormAuthState extends State<FormAuth> {
                     ),
                   ),
                   TextFormField(
+                    onSaved: ((value) {
+                      // _password diatas akan diisi dengan value
+                      _password = value!;
+                    }),
                     validator: (value) {
                       if (value!.isEmpty || value.length < 6) {
-                        return "Username minimal 6 karakter";
+                        return "Password minimal 6 karakter";
                       }
                     },
                     obscureText: true,
@@ -72,7 +85,9 @@ class _FormAuthState extends State<FormAuth> {
                     height: 10,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _trySubmit();
+                    },
                     child: Text("Login"),
                   ),
                   TextButton(
