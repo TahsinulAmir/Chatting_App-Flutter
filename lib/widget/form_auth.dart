@@ -10,6 +10,7 @@ class FormAuth extends StatefulWidget {
 class _FormAuthState extends State<FormAuth> {
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return SingleChildScrollView(
       child: Center(
         child: Card(
@@ -17,6 +18,7 @@ class _FormAuthState extends State<FormAuth> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Form(
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
