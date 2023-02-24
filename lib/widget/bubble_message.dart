@@ -10,7 +10,8 @@ class BubbleMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      // jika isMe maka mainAxisAligment.end, jika bukan start
+      mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
         Container(
           width: 150,
@@ -18,12 +19,13 @@ class BubbleMessage extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Colors.blue,
+            // Jika isMe maka warna grey, jika bukan isMe maka warna blue
+            color: isMe ? Colors.blue : Colors.grey,
           ),
           child: Text(
             message,
             style: TextStyle(
-              color: Colors.white,
+              color: isMe ? Colors.white : Colors.black,
             ),
           ),
         ),
