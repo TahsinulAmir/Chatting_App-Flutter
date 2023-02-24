@@ -1,5 +1,6 @@
 import 'package:chatting_app/widget/bubble_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -28,6 +29,9 @@ class Messages extends StatelessWidget {
               final chat = chatList[index];
               return BubbleMessage(
                 message: chat['text'],
+                // dibandingkan
+                // apakah chat 'userId' sama dengan user yang login sekarang
+                isMe: chat['userId'] == FirebaseAuth.instance.currentUser!.uid,
               );
             },
           );
