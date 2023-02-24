@@ -16,7 +16,7 @@ class FormAuth extends StatefulWidget {
 }
 
 class _FormAuthState extends State<FormAuth> {
-  bool isLogin = false;
+  bool isLogin = true;
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _email = '';

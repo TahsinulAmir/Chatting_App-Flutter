@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BubbleMessage extends StatelessWidget {
-  BubbleMessage({super.key, required this.message});
+  BubbleMessage({super.key, required this.message, required this.isMe});
 
   // constructor
   String message;
+  bool isMe;
 
   @override
   Widget build(BuildContext context) {

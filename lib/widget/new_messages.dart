@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,16 +16,20 @@ class _NewMessagesState extends State<NewMessages> {
   String _message = '';
   final messageController = TextEditingController();
 
-  void _sendMessage() {
+  void _sendMessage() async {
     // Jika pesannya/_message kosong makan tidak dikirim
     if (_message == '') {
       return;
     }
+
+    // mendapaktan user yg terakhir login
+    final user = await FirebaseAuth.instance.currentUser;
     // Jika pesan/_message tidak kosong maka akan menjalankan ini
     // Disimpan di collection chat dari variable _message
     FirebaseFirestore.instance.collection('chat').add({
       'text': _message,
       'createdAt': Timestamp.now(), // mengurutkan dari waktu yang terbaru
+      'userId': user!.uid,
     });
     // menghapus text di TextField
     messageController.clear();
